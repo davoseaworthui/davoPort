@@ -1,0 +1,126 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Charmonman&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
+
+html,
+body {
+  height: 100%;
+  /* background-color: #72a0c1; */
+  background-color: cornsilk;
+}
+body,
+:root,
+.mat-body,
+.mat-body-1,
+.mat-typography {
+  width: 100%;
+  font-family: "Oxygen", sans-serif;
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+  font-family: "Oxygen", sans-serif;
+}
+h1 {
+  font-size: 3em;
+  font-weight: 100;
+  line-height: 1.2;
+  font-family: "DM Serif Display", "Bodoni", serif;
+}
+label,
+span {
+  margin: 0;
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.3em;
+  font-stretch: semi-condensed;
+}
+p {
+  margin: 0;
+  font-family: "Oxygen", sans-serif;
+  font-size: 1.1em;
+}
+button {
+  font-family: "Oxygen", sans-serif;
+  padding: 10px;
+  font-size: 20px;
+  border: none;
+}
+button:hover {
+  border-bottom: 3px inset solid #0476d0;
+}
+.mat-form-field-label {
+  color: #333;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+main {
+  height: 100%;
+}
+.owl-theme .owl-nav {
+  position: absolute !important;
+  z-index: 20 !important;
+  top: 50% !important;
+  width: 100%;
+}
+.owl-prev {
+  position: absolute;
+  left: 5%;
+  background: #d9d9d90f !important;
+}
+.owl-next {
+  position: absolute;
+  right: 5%;
+  background: #d9d9d90f !important;
+}
+@media screen and (max-width: 991px) {
+  main {
+    padding-top: 0%;
+  }
+}
+.owl-theme .owl-nav {
+  position: absolute !important;
+  z-index: 20 !important;
+  top: 50% !important;
+}
+.carousel-img {
+  height: 100vh;
+  width: 100% !important;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 14;
+  transition: transform 1.2s;
+}
+.carousel-img:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "davoseaworth-3cb21": {
+      "hosting": {
+        "davoseaworth": [
+          "davoseaworth-3cb21"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "davoseaworth-3cb21"
+  }
+}
