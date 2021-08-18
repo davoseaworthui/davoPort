@@ -9,6 +9,7 @@
     }
   },
   "projects": {
-    "default": "davoseaworth-3cb21"
+    "default": "davoseaworth-3cb21",
+    "dev": "davoseaworth-3cb21"
   }
 }

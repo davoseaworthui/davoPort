@@ -14,11 +14,14 @@ import { CarouselComponent } from './components/carousel/carousel.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlModule } from 'ngx-owl-carousel';
+import { FlickityModule } from 'ngx-metafizzy-flickity';
+
 
 //firebase
 import { AngularFireModule } from '@angular/fire';
@@ -28,25 +31,14 @@ import { environment } from 'src/environments/environment';
 import { CarouselTwoComponent } from './carousel-two/carousel-two.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ShowcaseComponent } from './pages/showcase/showcase.component';
-import { ProjectDetailComponent } from './components/project-detail/project-detail.component';
+import { SlugPipe } from './customPipes/slug.pipe';
+
+
+
+//services
+//import { ProjectService } from './services/portfolio.service';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatListModule,
-    NgbModule,
-
-    CarouselModule,
-    OwlModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule,
-    
-  ],
   declarations: [
     AppComponent,
     HeaderComponent,
@@ -56,8 +48,26 @@ import { ProjectDetailComponent } from './components/project-detail/project-deta
     CarouselTwoComponent,
     ProfileComponent,
     ShowcaseComponent,
-    ProjectDetailComponent
+    SlugPipe
   ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatListModule,
+    MatProgressSpinnerModule,
+    NgbModule,
+    FlickityModule,
+
+    CarouselModule,
+    OwlModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    ],
+  
   providers: [],
   bootstrap: [AppComponent]
 })
