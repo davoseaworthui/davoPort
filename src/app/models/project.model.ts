@@ -1,4 +1,4 @@
-export default class PortfolioModel
+export default class Portfolio
 {
     projId?: string;
     projTitle?: string;

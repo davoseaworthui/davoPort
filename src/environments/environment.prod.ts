@@ -3,6 +3,7 @@ export const environment = {
   firebaseConfig: {
     apiKey: "AIzaSyBoagODcyCdrajdP0W__p9Ppw88qBqXsZw",
     authDomain: "davoseaworth-3cb21.firebaseapp.com",
+    databaseURL: "https://davoseaworth-3cb21-default-rtdb.firebaseio.com",
     projectId: "davoseaworth-3cb21",
     storageBucket: "davoseaworth-3cb21.appspot.com",
     messagingSenderId: "376271928917",

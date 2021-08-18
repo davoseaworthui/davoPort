@@ -1,3 +1,11 @@
-<div flickity>
-    <div *ngFor="let child of children">{{ child.title }}</div>
+<ngb-carousel *ngIf="currentProject">
+  <div *ngFor="let proj of currentProject">
+    <ng-template ngbSlide>
+      
+      <div class="carousel-caption">
+        <h3>{{ proj.projTitle }}</h3>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
   </div>
+</ngb-carousel>

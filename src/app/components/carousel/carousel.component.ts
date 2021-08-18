@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ProjectService } from 'src/app/services/portfolio.service';
+import PortfolioModel from 'src/app/models/project.model';
+import { Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-carousel',
@@ -7,6 +13,12 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
+  
+  projects?: PortfolioModel[];
+  projs?: Observable<PortfolioModel[]>;
+  projectId!: string;
+
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -23,10 +35,10 @@ export class CarouselComponent implements OnInit {
         items: 1 
       },
       400: {
-        items: 1
+        items: 2
       },
       808: {
-        items: 1
+        items: 2
       },
       940: {
         items: 2
@@ -43,12 +55,46 @@ export class CarouselComponent implements OnInit {
     {id: "3", heading: "Azienda Verde", subHeading: "Mock-up / Media", img: "https://firebasestorage.googleapis.com/v0/b/davoseaworth-3cb21.appspot.com/o/azienda.jpg?alt=media&token=f828aa59-265c-4737-8bbb-3676989e65f8"},
     {id: "4", heading: "Kay and Jeff", subHeading: "Mock-up / Media / Branding", img: "https://firebasestorage.googleapis.com/v0/b/davoseaworth-3cb21.appspot.com/o/knj.jpg?alt=media&token=0fd09cee-8c4b-40dc-8f2b-9e0c4b518c5d"},
     {id: "5", heading: "ALIVE Events", subHeading: "Mock-up / Media", img: "https://firebasestorage.googleapis.com/v0/b/davoseaworth-3cb21.appspot.com/o/alive.jpg?alt=media&token=14f3a5f7-ac07-4db1-9d4f-5b46a157eef7"},
-    {id: "6", heading: "FastTrack", subHeading: "Mock-up / Branding", img: "https://firebasestorage.googleapis.com/v0/b/davoseaworth-3cb21.appspot.com/o/ft.jpg?alt=media&token=d304a990-de4e-4f67-badd-848bf3e759cc"}
+    {id: "6", heading: "FastTrack", subHeading: "Mock-up / Branding", img: "https://firebasestorage.googleapis.com/v0/b/davoseaworth-3cb21.appspot.com/o/ft.jpg?alt=media&token=d304a990-de4e-4f67-badd-848bf3e759cc"} 
   ];
 
-  constructor() { }
+  constructor(private showcaseProjects: ProjectService, private db: AngularFirestore) { }
 
-  ngOnInit(): void {
+  currentProject: PortfolioModel[] = [];
+  private unsubscribe$ = new Subject<void>();
+
+
+  ngOnInit() {
+    // this.projs = this.db.collection('Projects').valueChanges();
+    this.projs = this.db.collection('Projects')
+    .snapshotChanges().pipe(
+    map(projArray => {
+      return projArray.map(doc => {
+        const data = doc.payload.doc.data() as PortfolioModel
+        return {
+          id: doc.payload.doc.id,
+          projId: data.projId,
+          projClient: data.projClient,
+          projMainImage: data.projMainImage,
+          projTitle: data.projTitle
+        };
+      });
+    }));
+    this.projectId = this.projectId;
+   // this.initializeProjects();
   }
 
+  getAllProjects() {
+    this.showcaseProjects.getAllCurrentProjects().pipe(takeUntil (this.unsubscribe$))
+    .subscribe(result => { this.currentProject = result});
+  }
+
+ /*  initializeProjects(): void {
+    this.showcaseProjects.getAllProjects().snapshotChanges().pipe(
+        map(changes => changes.map(c => ({ projId: c.payload.doc.id, ...c.payload.doc.data()})
+        ))
+      )
+      .subscribe(data => { this.projects = data; });
+      console.log(this.projects);
+  } */
 }
