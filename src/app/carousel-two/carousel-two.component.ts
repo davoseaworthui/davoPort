@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ProjectService } from 'src/app/services/portfolio.service';
+//import { ProjectService } from 'src/app/services/portfolio.service';
 import PortfolioModel from 'src/app/models/project.model';
 import { map, takeUntil } from 'rxjs/operators';
 import { Observable, Subject } from 'rxjs';
@@ -14,7 +14,7 @@ export class CarouselTwoComponent implements OnInit {
   projects?: PortfolioModel[];
 
 
-  constructor(private showcaseProjects: ProjectService, private db: AngularFirestore) { }
+  constructor( private db: AngularFirestore) { }
 
   ngOnDestroy() {
     this.unsubscribe$.next();
@@ -26,15 +26,15 @@ export class CarouselTwoComponent implements OnInit {
   ngOnInit(): void {
    // this.initializeProjects();
     //this.db.collection('Projects').valueChanges().subscribe(x => (console.log(x)));
-    this.getAllProjects();
+    //this.getAllProjects();
 
   }
 
-  getAllProjects() {
+  /* getAllProjects() {
     this.showcaseProjects.getAllCurrentProjects().pipe(takeUntil (this.unsubscribe$))
     .subscribe(result => { this.currentProject = result});
   }
-  /* initializeProjects(): void {
+  initializeProjects(): void {
     this.showcaseProjects.getAllProjects().snapshotChanges().pipe(
         map(changes => changes.map(c => ({ id: c.payload.doc.id, ...c.payload.doc.data()})
         ))

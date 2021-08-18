@@ -1,8 +1,8 @@
 
 <div class="carousel-wrapper">
-  <owl-carousel-o [options]="customOptions" class="owl-container">
+  <owl-carousel-o [options]="customOptions" (initialized)="getData($event)" class="owl-container">
     <ng-container class="carousel-inner" *ngFor="let project of projs | async">
-      <ng-template  carouselSlide >
+      <ng-template  carouselSlide [id]="project.projId">
         <div class="carousel-item">
           <a routerLink="/projects/{{ project.projClient}}">
             <img class="carousel-img img-responsive" src="{{ project.projMainImage }}" >

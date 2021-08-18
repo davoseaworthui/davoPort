@@ -1,6 +1,6 @@
 export default class Portfolio
 {
-    projId?: string;
+    projId!: string;
     projTitle?: string;
     projClient?: string;
     projDescription?: string;
