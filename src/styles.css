@@ -7,6 +7,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap");
 
+@import "~@glidejs/glide/src/assets/sass/glide.core";
+@import "~@glidejs/glide/src/assets/sass/glide.theme";
+
 html,
 body {
   height: 100%;
@@ -86,6 +89,7 @@ body {
 main {
   height: 100%;
 }
+
 .owl-theme .owl-nav {
   position: absolute !important;
   z-index: 20 !important;
@@ -123,4 +127,19 @@ main {
 .carousel-img:hover {
   transform: scale(1.1);
   opacity: 0.8;
+}
+.carousel-inner .carousel-item {
+  height: 100vh !important;
+}
+.picsum-img-wrapper img {
+  height: 100vh;
+  width: 100% !important;
+  object-fit: cover;
+  object-position: top center;
+}
+.mat-h2,
+.mat-h3,
+.mat-h4 {
+  margin: 8px 0 !important;
+  font: 500 20px/32px "Oxygen", sans-serif !important;
 }

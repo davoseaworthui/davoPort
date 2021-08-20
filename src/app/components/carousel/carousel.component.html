@@ -1,12 +1,28 @@
 
-<div class="carousel-wrapper">
+ <div class="carousel-wrapper">
   <owl-carousel-o [options]="customOptions" (initialized)="getData($event)" class="owl-container">
-    <ng-container class="carousel-inner" *ngFor="let project of projs | async">
-      <ng-template  carouselSlide [id]="project.projId">
+    <ng-container class="carousel-inner" *ngFor="let project of projects">
+      <ng-template  carouselSlide [id]="project.id">
         <div class="carousel-item">
-          <a routerLink="/projects/{{ project.projClient}}">
-            <img class="carousel-img img-responsive" src="{{ project.projMainImage }}" >
-          </a>
+          <img class="carousel-img img-responsive" [src]="project.projMainImage" [alt]="project.projTitle" [title]="project.projTitle" routerLink="/projects/{{ project.projClient}}">
+          <div class="carousel-item--details">
+            <h2>{{ project.projClient }}</h2>
+            <h2>{{ project.id }}</h2>
+
+            <h3>{{ project.projTitle }}</h3>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div> 
+<!-- 
+ <div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions" class="owl-container">
+    <ng-container class="carousel-inner" *ngFor="let project of projects">
+      <ng-template  carouselSlide [id]="project.sliderId">
+        <div class="carousel-item">
+          <img class="carousel-img img-responsive" src={{project.projMainImage}} [alt]="project.projTitle" [title]="project.projTitle" routerLink="/projects/{{ project.projClient}}" loading="lazy">
           <div class="carousel-item--details">
             <h2>{{ project.projClient }}</h2>
             <h3>{{ project.projTitle }}</h3>
@@ -15,5 +31,21 @@
       </ng-template>
     </ng-container>
   </owl-carousel-o>
-</div>
+</div> 
 
+<div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions" class="owl-container">
+    <ng-container class="carousel-inner" *ngFor="let slide of slides ">
+      <ng-template  carouselSlide [id]="slide.id">
+        <div class="carousel-item">
+          <img class="carousel-img img-responsive" [src]="slide.img" routerLink="/projects/{{ slide.heading}}" loading="lazy">
+          <div class="carousel-item--details">
+            <h2>{{ slide.heading }}</h2>
+            <h3>{{ slide.subHeading }}</h3>
+          </div>
+        </div>
+      </ng-template>  
+    </ng-container>
+  </owl-carousel-o>
+</div> 
+ -->

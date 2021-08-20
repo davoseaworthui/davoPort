@@ -1,0 +1,24 @@
+<!-- <swiper [config]="config">
+  <div class="swiper-wrapper">
+    <img class="swiper-slide" *ngFor="let proj of projs | async" [src]="proj.projMainImage" [alt]="proj.projTitle" />
+  </div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+</swiper> 
+
+
+
+<div flickity class="carousel">
+    <div flickityChild *ngFor="let proj of projs | async" class="carousel-cell">
+        <img class="carousel-img" [src]="proj.projMainImage">
+    </div>
+</div>-->
+
+<ng-container *ngIf="projs">
+    <ngx-glide #ngxGlide>
+      <ng-container *ngFor="let proj of projs | async">
+        <div>{{ proj.projTitle }}</div>
+        <img src={{proj.projMainImage }}>
+      </ng-container>
+    </ngx-glide>
+  </ng-container>
