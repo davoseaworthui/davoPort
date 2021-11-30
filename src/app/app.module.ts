@@ -25,7 +25,6 @@ import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
 import { NgxGlideModule } from 'ngx-glide';
 
-
 //firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';

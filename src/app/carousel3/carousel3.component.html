@@ -14,11 +14,10 @@
     </div>
 </div>-->
 
-<ng-container *ngIf="projs">
-    <ngx-glide #ngxGlide>
-      <ng-container *ngFor="let proj of projs | async">
+<ng-container *ngIf="projs && projs.forEach">
+  <ngx-glide #ngxGlide>
+      <div *ngFor="let proj of projs | async">
         <div>{{ proj.projTitle }}</div>
-        <img src={{proj.projMainImage }}>
-      </ng-container>
-    </ngx-glide>
-  </ng-container>
+      </div>
+  </ngx-glide>
+</ng-container>

@@ -23,6 +23,11 @@ export class CarouselComponent implements OnInit, OnDestroy {
 
   activeSlides?: SlidesOutputData;
   slidesStore?: any[];
+  arrowLeftLabel!: string;
+  arrowRightLabel!: string;
+
+  showCustomArrows!: boolean;
+
 
 
   customOptions: OwlOptions = { 
@@ -74,6 +79,10 @@ export class CarouselComponent implements OnInit, OnDestroy {
   //  this.getProjects();
     this.projectSubscription = this.projectService.projectsChanged.subscribe(projects => (this.projects = projects));
     this.projectService.fetchAllProjects();
+    this.showCustomArrows = true;
+    this.arrowLeftLabel = "←";
+    this.arrowRightLabel = "→";
+
   }
 
   getData(data: SlidesOutputData) {

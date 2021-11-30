@@ -16,6 +16,7 @@ import { NgxGlideComponent } from 'ngx-glide';
 })
 export class Carousel3Component implements OnInit {
   projs?: Observable<any>;
+  
 
   @ViewChild('ngxGlide') ngxGlide!: NgxGlideComponent;
 
@@ -58,9 +59,4 @@ wrapAround: true
 
     
   }
-  play(): void {
-    this.ngxGlide.play();
-  }
-
-
 }
