@@ -1,11 +1,11 @@
-<ngb-carousel *ngIf="currentProject">
-  <div *ngFor="let proj of currentProject">
-    <ng-template ngbSlide>
-      
+<ngb-carousel *ngIf="projs" >
+    <ng-template ngbSlide *ngFor="let proj of projs | async">
+      <div class="picsum-img-wrapper"> 
+        <img [src]="proj.projMainImage" alt="Random first slide">
+      </div>
       <div class="carousel-caption">
-        <h3>{{ proj.projTitle }}</h3>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <h2>{{ proj.projClient}}</h2>
+        <h4>{{ proj.projTitle}}</h4>
       </div>
     </ng-template>
-  </div>
-</ngb-carousel>
+  </ngb-carousel>  

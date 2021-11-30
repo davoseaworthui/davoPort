@@ -21,7 +21,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OwlModule } from 'ngx-owl-carousel';
 import { FlickityModule } from 'ngx-metafizzy-flickity';
-
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import { NgxUsefulSwiperModule } from 'ngx-useful-swiper';
+import { NgxGlideModule } from 'ngx-glide';
 
 //firebase
 import { AngularFireModule } from '@angular/fire';
@@ -32,9 +34,7 @@ import { CarouselTwoComponent } from './carousel-two/carousel-two.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { ShowcaseComponent } from './pages/showcase/showcase.component';
 import { SlugPipe } from './customPipes/slug.pipe';
-
-
-
+import { Carousel3Component } from './carousel3/carousel3.component';
 //services
 //import { ProjectService } from './services/portfolio.service';
 
@@ -48,7 +48,8 @@ import { SlugPipe } from './customPipes/slug.pipe';
     CarouselTwoComponent,
     ProfileComponent,
     ShowcaseComponent,
-    SlugPipe
+    SlugPipe,
+    Carousel3Component
   ],
   imports: [
     BrowserModule,
@@ -61,6 +62,9 @@ import { SlugPipe } from './customPipes/slug.pipe';
     MatProgressSpinnerModule,
     NgbModule,
     FlickityModule,
+    NgxUsefulSwiperModule,
+    NgxGlideModule,
+    MatCarouselModule.forRoot(),
 
     CarouselModule,
     OwlModule,

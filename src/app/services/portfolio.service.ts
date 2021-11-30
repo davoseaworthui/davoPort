@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -12,7 +13,11 @@ import WebsiteModel  from '../models/projectWebsite.model';
 })
 export class ProjectService {
 
+    projectChanges = new Subject<PortfolioModel>();
+    projectsChanged = new Subject<PortfolioModel[]>();
+
     private dataProjects = '/Projects';
+    private availableProjects: PortfolioModel[] = [];
 
     showcaseProjectsRef: AngularFirestoreCollection<PortfolioModel>;
 
@@ -22,19 +27,28 @@ export class ProjectService {
     getAllProjects(): AngularFirestoreCollection<PortfolioModel> {
         return this.showcaseProjectsRef;
     }
-    getAllCurrentProjects(): Observable<PortfolioModel[]>{
-        const currentProjects = this.db.collection<PortfolioModel>('Projects', ref => ref.orderBy('projTitle'))
-        .snapshotChanges().pipe(
-            map(actions => {
-                return actions.map(
-                    c => ({
-                        projId: c.payload.doc.id,
-                        ...c.payload.doc.data()
-                    })
-                );
-            })
-        );
-        return currentProjects;
+   
+    fetchAllProjects() {
+        this.db.collection('Projects')
+            .snapshotChanges().pipe(
+            map(projArray => {
+            return projArray.map(doc => {
+                const data = doc.payload.doc.data() as PortfolioModel
+                return {
+                id: doc.payload.doc.id,
+                projId: data.projId,
+                projClient: data.projClient,
+                projMainImage: data.projMainImage,
+                projTitle: data.projTitle,
+                sliderId: data.sliderId,
+                };
+            });
+        }))
+            .subscribe((projects: PortfolioModel[]) => {
+                this.availableProjects = projects;
+                console.log(this.availableProjects);
+                this.projectsChanged.next([...this.availableProjects])
+            });
     }
     
 

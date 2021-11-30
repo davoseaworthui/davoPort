@@ -1,12 +1,29 @@
 
+<!-- 
 <div class="carousel-wrapper">
-  <owl-carousel-o [options]="customOptions" class="owl-container">
-    <ng-container class="carousel-inner" *ngFor="let project of projs | async">
-      <ng-template  carouselSlide >
+  <owl-carousel-o [options]="customOptions" (initialized)="getData($event)" class="owl-container">
+    <ng-container class="carousel-inner" *ngFor="let project of projects">
+      <ng-template  carouselSlide [id]="project.id">
         <div class="carousel-item">
-          <a routerLink="/projects/{{ project.projClient}}">
-            <img class="carousel-img img-responsive" src="{{ project.projMainImage }}" >
-          </a>
+          <img class="carousel-img img-responsive" [src]="project.projMainImage" [alt]="project.projTitle" routerLink="/projects/{{ project.projClient}}">
+          <div class="carousel-item--details">
+            <h2>{{ project.projClient }}</h2>
+            <h2>{{ project.id }}</h2>
+
+            <h3>{{ project.projTitle }}</h3>
+          </div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</div> 
+
+ <div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions" class="owl-container">
+    <ng-container class="carousel-inner" *ngFor="let project of projects">
+      <ng-template  carouselSlide [id]="project.sliderId">
+        <div class="carousel-item">
+          <img class="carousel-img img-responsive" src={{project.projMainImage}} [alt]="project.projTitle" [title]="project.projTitle" routerLink="/projects/{{ project.projClient}}" loading="lazy">
           <div class="carousel-item--details">
             <h2>{{ project.projClient }}</h2>
             <h3>{{ project.projTitle }}</h3>
@@ -15,5 +32,55 @@
       </ng-template>
     </ng-container>
   </owl-carousel-o>
-</div>
+</div> 
 
+<div class="carousel-wrapper">
+  <owl-carousel-o [options]="customOptions" class="owl-container">
+    <ng-container class="carousel-inner" *ngFor="let slide of slides ">
+      <ng-template  carouselSlide [id]="slide.id">
+        <div class="carousel-item">
+          <img class="carousel-img img-responsive" [src]="slide.img" routerLink="/projects/{{ slide.heading}}" loading="lazy">
+          
+        </div>
+      </ng-template>  
+    </ng-container>
+  </owl-carousel-o>
+</div> 
+ -->
+
+ <ng-container *ngIf="projects">
+  <ngx-glide #ngxGlide
+  [breakpoints]="{ '1200': { perView: 1 } }"
+  [perView]=2
+  [rewind]=true
+  [perTouch]=1
+  [gap]=0
+  [bound]=true
+  [showBullets]=false
+  [arrowLeftLabel]="arrowLeftLabel"
+  [arrowRightLabel]="arrowRightLabel"
+  [animationDuration]=1000
+  [arrowLeftTemplate]="(showCustomArrows && arrowLeftTemplate) || null"
+  [arrowRightTemplate]="(showCustomArrows && arrowRightTemplate) || null"
+
+  >
+ 
+      <div class="carousel-inner" *ngFor="let proj of projects">
+        <img class="carousel-img" [src]="proj.projMainImage" routerLink="/projects/{{ proj.projClient}}">
+        <div class="carousel-item--details">
+          <h2>{{ proj.projClient }}</h2>
+          <h3>{{ proj.projTitle }}</h3>
+        </div>
+      </div>
+  </ngx-glide>
+</ng-container>
+<ng-template #arrowLeftTemplate>
+  <div class="custom-arrow custom-arrow-left">
+    <span class='material-icons'>arrow_back</span>
+  </div>
+</ng-template>
+<ng-template #arrowRightTemplate>
+  <div class="custom-arrow custom-arrow-right">
+    <span class='material-icons'>arrow_forward</span>
+  </div>
+</ng-template>
